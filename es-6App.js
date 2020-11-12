@@ -125,3 +125,21 @@ productListUl.addEventListener('click', (e) => {
         ui.alarting(`product deleted successfully`,'success');
     }
 });
+
+
+//search option
+filter.addEventListener('keyup', (e) => {
+    const searchText = e.target.value.toLowerCase();
+    document.querySelectorAll('.list-group-item').forEach((products) => {
+        const searchProduct = products.firstElementChild.textContent.toLowerCase();
+        if (searchProduct.includes(searchText)) {
+            products.style.display = "block";
+            noItemMsg.innerHTML = '';
+        } else {
+            products.style.display = "none";
+            noItemMsg.innerHTML = 'No product found';
+        }
+
+    });
+});
+
